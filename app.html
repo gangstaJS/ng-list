@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="ngList">
+<head>
+	<meta charset="utf-8">	
+	<title>NgList</title>
+
+	<link rel="stylesheet" type="text/css" href="./dist/style.css">
+</head>
+
+<body>
+
+<section ng-view></section>
+
+
+<!-- template -->
+<script type="text/tpl" id="t-items">
+	<a href="#/add">Add</a> <button ng-click="clearStore()">Clear store</button>
+	<ul>
+		<li ng-repeat="(k,v) in items">
+			<span>{{v}}</span> 
+			<a href="#/edit/{{k}}">Edit</a> 
+			<button ng-click="rm(k)">Remove</button>
+		</li>
+	</ul>
+</script>
+
+
+<script type="text/tpl" id="t-edit">
+	<div>
+		<input type="text" ng-model="value"  value="{{value || ''}}"> 
+			<button ng-click="addItem()">Add</button> 
+			<a href="#/list">go back</a>
+	</div>
+</script>
+
+<!-- /end template -->
+
+<script src="./dist/bundle.js"></script>
+</body>
+
+</html>
