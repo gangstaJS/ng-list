@@ -46,18 +46,17 @@
 
 	const angular = __webpack_require__(1);
 	const routerConf = __webpack_require__(3);
-	const listCtrl = __webpack_require__(8);
-	const editCtrl = __webpack_require__(9);
+	__webpack_require__(7);
 
-	__webpack_require__(5);
+	var ngList = angular.module('ngList', [__webpack_require__(8), 'services.serviceStorageList']);
 
+	__webpack_require__(12)(ngList);
 
-	var ngList = angular.module('ngList', [__webpack_require__(6), 'services.serviceStorageList']);
+	__webpack_require__(10)(ngList);
+	__webpack_require__(11)(ngList);
 
 	ngList.config(routerConf);
 
-	listCtrl(ngList);
-	editCtrl(ngList);
 
 
 
@@ -29101,12 +29100,12 @@
 
 	module.exports = function($routeProvider) {
 		var mainAction = {
-			template: utils.html('t-items'),
+			template: utils.html('t-list'),
 			controller: 'listCtrl'
 		}
 
 		var addAction = {
-			// template: utils.html('t-edit'),
+			template: utils.html('t-edit'),
 			controller: 'editCtrl'
 		}
 
@@ -29154,7 +29153,9 @@
 	module.exports.generateGuid = generateGuid; 
 
 /***/ },
-/* 5 */
+/* 5 */,
+/* 6 */,
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	const utils = __webpack_require__(4);
@@ -29220,15 +29221,15 @@
 
 
 /***/ },
-/* 6 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(7);
+	__webpack_require__(9);
 	module.exports = 'ngRoute';
 
 
 /***/ },
-/* 7 */
+/* 9 */
 /***/ function(module, exports) {
 
 	/**
@@ -30225,10 +30226,11 @@
 
 
 /***/ },
-/* 8 */
+/* 10 */
 /***/ function(module, exports) {
 
 	module.exports = function(ngInstance) {
+
 		ngInstance.controller('listCtrl', [
 			'$scope', 
 			'$location',
@@ -30247,13 +30249,18 @@
 					$route.reload();
 				}
 
+				console.log(1);
+
 			}
 		]);
+
 	}
 
 /***/ },
-/* 9 */
-/***/ function(module, exports) {
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	const utils = __webpack_require__(4);
 
 	module.exports = function(ngInstance) {
 		ngInstance.controller('editCtrl', [
@@ -30276,6 +30283,24 @@
 
 			}
 		]);
+	}
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	const utils = __webpack_require__(4);
+
+	module.exports = function(ngInstance) {
+
+		ngInstance.directive('itemsRange', function() {        
+	        return {
+	        	restrict: 'A',
+	        	scope: false,
+	            template: utils.html('t-item')
+	        }
+	    });
+
 	}
 
 /***/ }

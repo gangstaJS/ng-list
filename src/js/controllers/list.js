@@ -1,4 +1,5 @@
 module.exports = function(ngInstance) {
+
 	ngInstance.controller('listCtrl', [
 		'$scope', 
 		'$location',
@@ -17,6 +18,9 @@ module.exports = function(ngInstance) {
 				$route.reload();
 			}
 
+			console.log(1);
+
 		}
 	]);
+
 }

@@ -2,12 +2,12 @@ const utils = require('./utils');
 
 module.exports = function($routeProvider) {
 	var mainAction = {
-		template: utils.html('t-items'),
+		template: utils.html('t-list'),
 		controller: 'listCtrl'
 	}
 
 	var addAction = {
-		// template: utils.html('t-edit'),
+		template: utils.html('t-edit'),
 		controller: 'editCtrl'
 	}
 

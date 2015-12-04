@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="ngList">
+<html>
 <head>
 	<meta charset="utf-8">	
 	<title>NgList</title>
@@ -7,29 +7,31 @@
 	<link rel="stylesheet" type="text/css" href="./dist/style.css">
 </head>
 
-<body>
+<body ng-app="ngList">
 
-<section ng-view></section>
-
+<section ng-view=""></section>
 
 <!-- template -->
-<script type="text/tpl" id="t-items">
+<script type="text/tpl" id="t-list">
+	<table items-range="items"></table>
+
 	<a href="#/add">Add</a> <button ng-click="clearStore()">Clear store</button>
-	<ul>
-		<li ng-repeat="(k,v) in items">
-			<span>{{v}}</span> 
-			<a href="#/edit/{{k}}">Edit</a> 
-			<button ng-click="rm(k)">Remove</button>
-		</li>
-	</ul>
+</script>
+
+<script type="text/tpl" id="t-item">
+	<tr ng-repeat="(k,v) in items">
+		<td>{{v}}</td> 
+		<td><a href="#/edit/{{k}}">Edit</a></td>
+		<td><button ng-click="rm(k)">Remove</button></td>
+	</tr>
 </script>
 
 
 <script type="text/tpl" id="t-edit">
 	<div>
 		<input type="text" ng-model="value"  value="{{value || ''}}"> 
-			<button ng-click="addItem()">Add</button> 
-			<a href="#/list">go back</a>
+		<button ng-click="addItem()">Add</button> 
+		<a href="#/list">go back</a>
 	</div>
 </script>
 

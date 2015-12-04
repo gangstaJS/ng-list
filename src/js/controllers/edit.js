@@ -1,3 +1,5 @@
+const utils = require('../utils');
+
 module.exports = function(ngInstance) {
 	ngInstance.controller('editCtrl', [
 		'$scope', 
